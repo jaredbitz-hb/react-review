@@ -1,4 +1,5 @@
-
+// A React component that creates a button and tracks how many times
+// it has been clicked
 function ClickButton() {
     const [clicks, setClicks] = React.useState(0);
 

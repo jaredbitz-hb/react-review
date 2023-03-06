@@ -3,22 +3,32 @@ function ButtonContainer() {
 
     const buttons = [];
     for(let i = 0; i < 5; i++) {
+        // Notice that this function is defined inside our for loop,
+        // so there are actually five different ones! (One for each value of i)
         const onClick = (event) => {
-            // Make a copy of the values array
-            const newValues = [...values];
+            const newValues = [...values]; // Make a copy of the values array
             newValues[i] += 1;
             setValues(newValues);
         }
+
+        // When you store an array of objects, each needs a unique key.
+        // This is so React can "remember" which is which if the DOM updates and
+        // elements get added or removed.
         buttons.push(
             <ClickButton onClick={onClick} clicks={values[i]} key={i}/>
         );
     }
 
+    // Count the total number of clicks across all buttons
     let totalClicks = 0;
     for (const value of values) {
         totalClicks += value
     }
 
+    // An array of components can be "unpacked" and rendered one after the other
+    // by putting it in curly brackets, like {buttons}.
+    // React components must also return just one element (possibly with children), 
+    // so we wrap the whole thing in a div.
     return (
         <div> 
             {buttons} 
@@ -27,6 +37,9 @@ function ButtonContainer() {
     );
 }
 
+
+// This component renders each individual button.
+// Notice that t
 function ClickButton(props) {
     return (
         <button onClick={props.onClick}>

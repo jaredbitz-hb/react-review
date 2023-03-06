@@ -8,7 +8,7 @@ This repository contains code for the React Review lecture. Last updated March 2
 git clone https://github.com/jaredbitz-hb/react-review.git
 cd react-review
 virtualenv env
-source ev/bin/activate
+source env/bin/activate
 pip3 install -r requirements.txt
 ```
 ---
