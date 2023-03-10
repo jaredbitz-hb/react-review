@@ -1,7 +1,6 @@
-from flask import Flask, render_template, session, request, jsonify
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
-app.secret_key = 'I<3React' # needed if we want to use the session cookie
 
 MENU_ITEMS = {
     'pizza': {
@@ -20,7 +19,6 @@ MENU_ITEMS = {
         'calories': 600,
     }
 }
-
 
 @app.route('/')
 def index():
@@ -49,10 +47,10 @@ def get_menu_item():
     return MENU_ITEMS[request.args.get('item')]
 
 # Gets a list of ALL menu items at once
+# use like fetch('/api/get_menu_items')
 @app.route('/api/get_menu_items')
 def get_menu_items():
-    return jsonify(list(MENU_ITEMS.values()))
-
+    return list(MENU_ITEMS.values())
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 5000, debug=True)
