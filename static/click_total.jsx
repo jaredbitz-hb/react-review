@@ -39,7 +39,8 @@ function ButtonContainer() {
 
 
 // This component renders each individual button.
-// Notice that t
+// Notice that the number of clicks is now a prop - it came from
+// our parent component above!
 function ClickButton(props) {
     return (
         <button onClick={props.onClick}>
