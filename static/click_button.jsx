@@ -1,16 +1,13 @@
-// A React component that creates a button and tracks how many times
-// it has been clicked
-function ClickButton() {
+function ClickButton(props) {
     const [clicks, setClicks] = React.useState(0);
 
-    const onClick = (event) => {
+    function buttonClicked() {
         setClicks(clicks + 1);
     }
 
     return (
-        <button onClick={onClick}>
-            I've been clicked {clicks} time(s)!
+        <button onClick={buttonClicked}>
+            I've been clicked {clicks} times!
         </button>
-    );
+    )
 }
-
