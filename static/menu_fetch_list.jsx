@@ -1,5 +1,4 @@
 function App() {
-
     const [items, setItems] = React.useState([])
 
     React.useEffect(() => {
@@ -12,9 +11,7 @@ function App() {
 
     const menuItems = [];
     for(const item of items) {
-        menuItems.push(
-            <MenuItem item={item} key={item.name}/>
-        )
+        menuItems.push(<MenuItem item={item} key={item.name}/>);
     }
 
     return (
@@ -24,34 +21,30 @@ function App() {
         </div>
     );
 }
+
 function MenuItem(props) {
     const [showInfo, setShowInfo] = React.useState(false);
 
-    function seeMore(event) {
-        setShowInfo(true);
+    function buttonClick(event) {
+        setShowInfo(!showInfo);
     }
 
-    let extraInfo;
+    let buttonText = 'See more';
     if (showInfo) {
-        extraInfo = (
-            <div>
-                Description: {props.item.description}
-                <br></br>
-                Calories: {props.item.calories}
-            </div>
-        )
-    } else {
-        extraInfo = (
-            <div>
-                <button onClick={seeMore}>See more</button>
-            </div>
-        );
+        buttonText = 'See less';
     }
 
+    // Using && with a boolean will only show the div if
+    // the boolean is true
     return (
         <div>
             <h2>{props.item.name}</h2>
-            {extraInfo}
+            {showInfo && <div>
+                Description: {props.item.description}
+                <br />
+                Calories: {props.item.calories}
+            </div>}
+            <button onClick={buttonClick}>{buttonText}</button>
         </div>
     );
 }
